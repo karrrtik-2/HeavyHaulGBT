@@ -89,21 +89,11 @@ class Session:
         self.user_input_history = []
         self.State_value = None
         self.global_state_value = None
-        
-        # Initialize conversation log
-        os.makedirs("logs", exist_ok=True)
-        with open(f"logs/{order_id}.txt", "w", encoding="utf-8") as file:
-            file.write("Conversation Log\n\n")
             
         # Fetch order document
         self.order_document = orders_collection.find_one({"token": order_id})
         if not self.order_document:
             raise ValueError(f"Order ID {order_id} not found")
-
-    def log_conversation(self, user_input, assistant_response):
-        with open(f"logs/{self.order_id}.txt", "a", encoding="utf-8") as file:
-            file.write(f"User input: {user_input}\n")
-            file.write(f"Assistant: {assistant_response}\n\n")
 
     def update_user_input_history(self, user_input):
         self.user_input_history.append(user_input)
@@ -299,8 +289,6 @@ class Session:
                 
             if download_messages:
                 response_text = "\n".join(download_messages)
-                # Log the conversation
-                self.log_conversation(user_input, response_text)
                 return response_text
 
         # Process permit info for the specific state
@@ -325,7 +313,6 @@ class Session:
                     order_dimensions = fetch_order_data(self.order_document)
                     if order_dimensions is None:
                         response_text = "Could not fetch order dimensions."
-                        self.log_conversation(user_input, response_text)
                         return response_text
                                 
                 system_message = (
@@ -359,7 +346,6 @@ class Session:
                         response_text += chunk.choices[0].delta.content
                 
                 print(f"[RESPONSE] Permit response generated: {response_text[:50]}...")
-                self.log_conversation(user_input, response_text)
                 return response_text
             else:
                 print(f"[PERMIT PROCESS] No permit info found for state: {mentioned_state}")
@@ -368,7 +354,6 @@ class Session:
         final_response = self.generate_final_response(user_input, restructured_data)
         print(f"[RESPONSE] Final response generated: {final_response[:50]}...")
         
-        self.log_conversation(user_input, final_response)
         print("--- QUERY PROCESSING COMPLETE ---\n")
         return final_response
 
