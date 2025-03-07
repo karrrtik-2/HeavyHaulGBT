@@ -1,0 +1,5 @@
+Conversation Log
+
+User input: which states are there
+Assistant: There are three states: Arizona, Nevada, and Idaho.
+

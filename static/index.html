@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeavyHaul Voice Assistant</title>
+    <style>
+        :root {
+            --bg-dark: #1c2230;
+            --bg-card: #2a3042;
+            --text-light: #f0f2f5;
+            --text-secondary: #a0aec0;
+            --primary: #5e81f4;
+            --primary-hover: #4a68d9;
+            --accent: #5466ff;
+            --accent-light: #5466ff20;
+            --green: #27ae60;
+            --red: #e74c3c;
+            --red-hover: #c0392b;
+            --yellow: #f39c12;
+            --border-color: #3d4355;
+            --input-bg: #202636;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+        }
+        
+        .container {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+            border: 1px solid var(--border-color);
+        }
+        
+        h1 {
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        
+        .input-group {
+            margin-bottom: 18px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            box-sizing: border-box;
+            background-color: var(--input-bg);
+            color: var(--text-light);
+            font-size: 15px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(94, 129, 244, 0.2);
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0;
+        }
+        
+        button {
+            padding: 12px 24px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(94, 129, 244, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        button:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(94, 129, 244, 0.4);
+        }
+        
+        button:disabled {
+            background-color: var(--border-color);
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+        }
+        
+        button.listening {
+            background-color: var(--red);
+            animation: pulse-red 1.5s infinite;
+        }
+        
+        button.listening:hover {
+            background-color: var(--red-hover);
+        }
+        
+        #status {
+            margin: 18px 0;
+            padding: 12px 16px;
+            border-left: 4px solid var(--primary);
+            background-color: rgba(94, 129, 244, 0.1);
+            border-radius: 0 6px 6px 0;
+            font-size: 15px;
+        }
+        
+        .conversation {
+            /* Existing styles */
+            margin-top: 24px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 16px;
+            background-color: var(--bg-card);
+            scrollbar-width: thin;
+            scrollbar-color: var(--border-color) var(--bg-card);
+            /* New properties */
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .conversation::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .conversation::-webkit-scrollbar-track {
+            background: var(--bg-card);
+        }
+        
+        .conversation::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+        
+        .message {
+            /* Existing styles */
+            margin-bottom: 16px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            position: relative;
+            border-left: 3px solid transparent;
+            /* New property */
+            max-width: 80%;
+        }
+        
+        .user-message {
+            /* Existing styles */
+            background-color: rgba(94, 129, 244, 0.1);
+            border-left-color: var(--primary);
+            /* New property */
+            align-self: flex-end;
+        }
+        
+        .assistant-message {
+            /* Existing styles */
+            background-color: rgba(39, 174, 96, 0.1);
+            border-left-color: var(--green);
+            /* New property */
+            align-self: flex-start;
+        }
+        
+        .message-label {
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .user-label {
+            color: var(--primary);
+        }
+        
+        .assistant-label {
+            color: var(--green);
+        }
+        
+        .pulse {
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+        
+        @keyframes pulse-red {
+            0% { background-color: var(--red); }
+            50% { background-color: rgba(231, 76, 60, 0.8); }
+            100% { background-color: var(--red); }
+        }
+        
+        /* Icons for better UI */
+        .icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        .mic-icon::before {
+            content: '🎤';
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        
+        .wave-animation {
+            display: inline-flex;
+            align-items: flex-end;
+            height: 16px;
+            margin-left: 8px;
+        }
+        
+        .wave-animation span {
+            display: inline-block;
+            width: 3px;
+            margin-right: 2px;
+            background-color: var(--primary);
+            border-radius: 1px;
+            animation: wave 1s infinite;
+        }
+        
+        .wave-animation span:nth-child(2) {
+            animation-delay: 0.1s;
+            height: 6px;
+        }
+        
+        .wave-animation span:nth-child(3) {
+            animation-delay: 0.2s;
+            height: 10px;
+        }
+        
+        .wave-animation span:nth-child(4) {
+            animation-delay: 0.3s;
+            height: 8px;
+        }
+        
+        .wave-animation span:nth-child(5) {
+            animation-delay: 0.4s;
+            height: 12px;
+        }
+        
+        @keyframes wave {
+            0%, 100% {
+                transform: scaleY(1);
+            }
+            50% {
+                transform: scaleY(1.6);
+            }
+        }
+        
+        /* Progress indicator for voice processing */
+        .processing-indicator {
+            display: inline-flex;
+            align-items: center;
+            margin-left: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .processing-indicator.active {
+            opacity: 1;
+        }
+        
+        .spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid transparent;
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 8px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HeavyHaul Voice Assistant</h1>
+        
+        <!-- Wrap in a form but prevent default submission -->
+        <form id="assistant-form" onsubmit="return false;">
+            <div class="input-group">
+                <label for="order-id">Order ID:</label>
+                <input type="text" id="order-id" placeholder="Enter Order ID" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="session-id">Session ID (optional):</label>
+                <input type="text" id="session-id" placeholder="Leave empty for new session" readonly>
+            </div>
+            
+            <div class="button-container">
+                <button id="speak-btn" type="button">
+                    <span class="mic-icon"></span>
+                    Start Listening
+                    <div class="wave-animation" style="display: none;">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+            </div>
+        </form>
+        
+        <div id="status">Say "Pixel" followed by your question about an order.</div>
+        
+        <div class="conversation" id="conversation">
+            <div class="message assistant-message">
+                <div class="message-label assistant-label">Assistant:</div>
+                <div>Hello! I'm your HeavyHaul assistant. Please say "Pixel" followed by your question about an order.</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const speakBtn = document.getElementById('speak-btn');
+            const statusDiv = document.getElementById('status');
+            const sessionIdInput = document.getElementById('session-id');
+            const orderIdInput = document.getElementById('order-id');
+            const conversationDiv = document.getElementById('conversation');
+            const assistantForm = document.getElementById('assistant-form');
+            const waveAnimation = document.querySelector('.wave-animation');
+            
+            // Using relative paths
+            const API_URL = '';
+            
+            // Wake word
+            const WAKE_WORD = "pixel";
+            
+            // Speech recognition setup
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            let recognition = null;
+            let isListening = false;
+            let processingCommand = false;
+            
+            // Current session ID
+            let currentSessionId = null;
+            
+            // Add message to conversation
+            function addMessage(text, isUser) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = isUser ? 'message user-message' : 'message assistant-message';
+                
+                const labelDiv = document.createElement('div');
+                labelDiv.className = isUser ? 'message-label user-label' : 'message-label assistant-label';
+                labelDiv.textContent = isUser ? 'You:' : 'Assistant:';
+                
+                const contentDiv = document.createElement('div');
+                contentDiv.textContent = text;
+                
+                messageDiv.appendChild(labelDiv);
+                messageDiv.appendChild(contentDiv);
+                
+                conversationDiv.appendChild(messageDiv);
+                conversationDiv.scrollTop = conversationDiv.scrollHeight;
+            }
+            
+            // Initialize speech recognition
+            function initSpeechRecognition() {
+                if (!SpeechRecognition) {
+                    statusDiv.textContent = 'Speech recognition not supported in this browser';
+                    speakBtn.disabled = true;
+                    return false;
+                }
+                
+                recognition = new SpeechRecognition();
+                recognition.lang = 'en-US';
+                recognition.continuous = false;  // We'll handle continuous listening manually
+                recognition.interimResults = false;
+                recognition.maxAlternatives = 1;
+                
+                recognition.onresult = function(event) {
+                    const transcript = event.results[0][0].transcript.trim();
+                    console.log('Recognized speech:', transcript);
+                    
+                    const transcriptLower = transcript.toLowerCase();
+                    if (transcriptLower.includes(WAKE_WORD.toLowerCase()) && !processingCommand) {
+                        processingCommand = true;
+                        statusDiv.textContent = 'Wake word detected. Processing...';
+                        
+                        // Extract command - everything after the wake word
+                        const commandParts = transcript.split(new RegExp(WAKE_WORD, 'i'));
+                        const command = commandParts.length > 1 ? commandParts[1].trim() : '';
+                        
+                        if (command) {
+                            addMessage(command, true);
+                            processCommand(command);
+                        } else {
+                            statusDiv.textContent = 'No command detected after wake word';
+                            processingCommand = false;
+                            restartRecognition();
+                        }
+                    } else {
+                        if (!processingCommand) {
+                            statusDiv.textContent = `Wake word not detected. Still listening for "${WAKE_WORD}".`;
+                            restartRecognition();
+                        }
+                    }
+                };
+                
+                recognition.onerror = function(event) {
+                    console.error('Speech recognition error:', event.error);
+                    if (event.error === 'no-speech') {
+                        // Just restart recognition on no-speech
+                        if (isListening && !processingCommand) {
+                            restartRecognition();
+                        }
+                    } else {
+                        statusDiv.textContent = `Error: ${event.error}. Restarting...`;
+                        if (isListening && !processingCommand) {
+                            setTimeout(restartRecognition, 1000);
+                        }
+                    }
+                };
+                
+                recognition.onend = function() {
+                    console.log('Recognition ended. isListening:', isListening, 'processingCommand:', processingCommand);
+                    // Only restart if we're still supposed to be listening and not processing a command
+                    if (isListening && !processingCommand) {
+                        restartRecognition();
+                    }
+                };
+                
+                return true;
+            }
+            
+            // Function to restart recognition with a slight delay to prevent resource issues
+            function restartRecognition() {
+                if (!isListening) return;
+                
+                setTimeout(() => {
+                    try {
+                        recognition.start();
+                        console.log('Restarted recognition');
+                    } catch (err) {
+                        console.error('Error restarting recognition:', err);
+                        // If we hit an error, try again after a longer delay
+                        setTimeout(restartRecognition, 2000);
+                    }
+                }, 300);
+            }
+            
+            // Process the recognized command
+            function processCommand(command) {
+                const orderId = orderIdInput.value.trim();
+                if (!orderId) {
+                    statusDiv.textContent = 'Please enter an Order ID';
+                    processingCommand = false;
+                    restartRecognition();
+                    return;
+                }
+                
+                statusDiv.textContent = 'Processing your question...';
+                statusDiv.classList.add('pulse');
+                
+                // Get session ID if available
+                const sessionId = sessionIdInput.value.trim() || currentSessionId;
+                
+                // Prepare the request data
+                const requestData = {
+                    message: command,
+                    order_id: orderId
+                };
+                
+                if (sessionId) {
+                    requestData.session_id = sessionId;
+                }
+                
+                // First, create an audio context to handle playback
+                let audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                
+                console.log('Sending request to chat API:', requestData);
+                
+                // Send request to backend using fetch API
+                fetch(`${API_URL}/chat`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestData)
+                })
+                .then(response => {
+                    console.log('Received response from chat API:', response.status);
+                    if (!response.ok) {
+                        throw new Error(`Server error: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Response data:', data);
+                    
+                    // Save session ID
+                    currentSessionId = data.session_id;
+                    sessionIdInput.value = currentSessionId;
+                    
+                    // Add assistant's response to conversation
+                    addMessage(data.response, false);
+                    
+                    console.log('Fetching audio from:', `${API_URL}${data.audio_endpoint}`);
+                    
+                    // Get the audio version of the response
+                    return fetch(`${API_URL}${data.audio_endpoint}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ text: data.response })
+                    });
+                })
+                .then(response => {
+                    console.log('Received audio response:', response.status);
+                    if (!response.ok) {
+                        throw new Error('Error fetching audio');
+                    }
+                    return response.arrayBuffer();  // Use arrayBuffer instead of blob for AudioContext
+                })
+                .then(arrayBuffer => {
+                    console.log('Decoding audio data...');
+                    statusDiv.textContent = 'Playing response...';
+                    statusDiv.classList.remove('pulse');
+                    
+                    // Decode the audio data
+                    return new Promise((resolve, reject) => {
+                        audioContext.decodeAudioData(
+                            arrayBuffer, 
+                            buffer => resolve(buffer),
+                            error => reject(new Error('Audio decoding error: ' + error))
+                        );
+                    });
+                })
+                .then(audioBuffer => {
+                    console.log('Audio decoded, playing...');
+                    
+                    // Create a source node
+                    const source = audioContext.createBufferSource();
+                    source.buffer = audioBuffer;
+                    source.connect(audioContext.destination);
+                    
+                    // When playback ends
+                    source.onended = () => {
+                        console.log('Audio playback complete, ready for next command');
+                        statusDiv.textContent = 'Ready for next command. Say "Pixel" followed by your question.';
+                        processingCommand = false;
+                        
+                        // Restart recognition after audio playback
+                        if (isListening) {
+                            restartRecognition();
+                        }
+                    };
+                    
+                    // Start playback
+                    source.start(0);
+                })
+                .catch(error => {
+                    console.error('Error in processing or audio playback:', error);
+                    statusDiv.textContent = `Error: ${error.message}. Ready for next command.`;
+                    statusDiv.classList.remove('pulse');
+                    processingCommand = false;
+                    
+                    // Restart recognition after error
+                    if (isListening) {
+                        restartRecognition();
+                    }
+                });
+            }
+            
+            // Explicitly prevent form submission
+            assistantForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                return false;
+            });
+            
+            // Initialize everything
+            if (initSpeechRecognition()) {
+                speakBtn.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    
+                    const orderId = orderIdInput.value.trim();
+                    if (!orderId) {
+                        statusDiv.textContent = 'Please enter an Order ID';
+                        return;
+                    }
+                    
+                    // Toggle listening state
+                    isListening = !isListening;
+                    
+                    if (isListening) {
+                        // Start continuous listening
+                        speakBtn.textContent = 'Stop Listening';
+                        speakBtn.classList.add('listening');
+                        waveAnimation.style.display = 'inline-flex';
+                        statusDiv.textContent = 'Continuously listening... Say "Pixel" followed by your question.';
+                        processingCommand = false;
+                        
+                        try {
+                            recognition.start();
+                        } catch (err) {
+                            console.error('Recognition start error:', err);
+                            statusDiv.textContent = 'Error starting recognition. Please try again.';
+                            isListening = false;
+                            speakBtn.textContent = 'Start Listening';
+                            speakBtn.classList.remove('listening');
+                            waveAnimation.style.display = 'none';
+                        }
+                    } else {
+                        // Stop listening
+                        speakBtn.textContent = 'Start Listening';
+                        speakBtn.classList.remove('listening');
+                        waveAnimation.style.display = 'none';
+                        statusDiv.textContent = 'Listening stopped. Click "Start Listening" to activate the voice assistant.';
+                        
+                        try {
+                            recognition.stop();
+                        } catch (err) {
+                            console.error('Recognition stop error:', err);
+                        }
+                    }
+                });
+                
+                // Make sure the inputs don't submit a form if pressed Enter
+                orderIdInput.addEventListener('keydown', function(event) {
+                    if (event.key === 'Enter') {
+                        event.preventDefault();
+                        return false;
+                    }
+                });
+                
+                sessionIdInput.addEventListener('keydown', function(event) {
+                    if (event.key === 'Enter') {
+                        event.preventDefault();
+                        return false;
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

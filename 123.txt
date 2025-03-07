@@ -1,0 +1,15 @@
+Conversation Log
+
+User input: give me the price breakdown for arizonaa
+Assistant: For Arizona, the price breakdown is: 
+- Price: $100.05
+- State fee: $15
+- Service fee: $25.03
+- Other fee: $0
+
+User input: User input
+Assistant: exit
+
+User input: Assistant
+Assistant: Goodbye!
+

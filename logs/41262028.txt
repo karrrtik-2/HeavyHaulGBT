@@ -1,0 +1,5 @@
+Conversation Log
+
+User input: is there any escort required in arizona
+Assistant: Yes, escorts are required for vehicles/loads over 11' wide and/or over 15' height per R17−6−402, and since your load is 12' wide and 14' height, escorts are required.
+

@@ -1,0 +1,242 @@
+{
+  "user": {
+    "role": "user",
+    "content": "which states are there\nOrder Data: [{'order_id': '11879654', 'routeData': [{'state_name': 'South Carolina - 2025-01-30'}, {'state_name': 'Georgia - 2025-01-31'}, {'state_name': 'Alabama - 2025-01-31'}, {'state_name': 'Mississippi - 2025-01-31'}, {'state_name': 'Texas - 2025-02-01'}, {'state_name': 'New Mexico - 2025-02-02'}, {'state_name': 'Arizona - 2025-02-02'}]}]"
+  },
+  "assistant": {
+    "role": "assistant",
+    "content": "The states are South Carolina, Georgia, Alabama, Mississippi, Texas, New Mexico, and Arizona."
+  }
+}
+
+{
+  "user": {
+    "role": "user",
+    "content": "My dimensions: {'length': {'feet': '70', 'inch': '0'}, 'width': {'feet': '9', 'inch': '3'}, 'height': {'feet': '13', 'inch': '6'}, 'weight': 87340, 'front_overhang': {'feet': '0', 'inch': '0'}, 'rear_overhang': {'feet': '0', 'inch': '0'}}\n\n is there any escort required to travel in texas (after checking my dimensions) (respond in 1 sentence and dont give unnecessary info or checks)"
+  },
+  "assistant": {
+    "role": "assistant",
+    "content": "No, escorts are not required for your dimensions, as your load is within the dimensions that can travel at nighttime on the Interstate Highway System with no escorts required, specifically loads not exceeding 14 feet high, which your load is 13 feet 6 inches."
+  }
+}
+
+{
+  "user": {
+    "role": "user",
+    "content": "what is the axle spacing\nOrder Data: [{'order_id': '11879654', 'axle_spacing': {'A1- A2': '17ft8in', 'A2- A3': '4ft5in', 'A3- A4': '38ft7in', 'A4- A5': '4ft5in'}}]"
+  },
+  "assistant": {
+    "role": "assistant",
+    "content": "The axle spacing for order 11879654 is A1-A2: 17ft8in, A2-A3: 4ft5in, A3-A4: 38ft7in, A4-A5: 4ft5in."
+  }
+}
+
+{
+  "user": {
+    "role": "user",
+    "content": "\nOrder Data: [{'if asked count or how many then answer': 85}, {'order_id': '93728473'}, {'order_id': '52805595'}, {'order_id': '39874427'}, {'order_id': '89513925'}, {'order_id': '27985136'}, {'order_id': '25670805'}, {'order_id': '31776566'}, {'order_id': '72408450'}, {'order_id': '92014063'}, {'order_id': '88366331'}, {'order_id': '24350771'}, {'order_id': '71765750'}, {'order_id': '25561874'}, {'order_id': '28268147'}, {'order_id': '88103950'}, {'order_id': '18321211'}, {'order_id': '62745374'}, {'order_id': '07773823'}, {'order_id': '10269063'}, {'order_id': '74379784'}, {'order_id': '59318979'}, {'order_id': '70371730'}, {'order_id': '16890752'}, {'order_id': '13315054'}, {'order_id': '91659217'}, {'order_id': '65951253'}, {'order_id': '77885759'}, {'order_id': '25887922'}, {'order_id': '27513631'}, {'order_id': '73196245'}, {'order_id': '44785741'}, {'order_id': '01529573'}, {'order_id': '98730669'}, {'order_id': '58335122'}, {'order_id': '32862815'}, {'order_id': '74205664'}, {'order_id': '55394296'}, {'order_id': '48137084'}, {'order_id': '16255116'}, {'order_id': '54424274'}, {'order_id': '20890567'}, {'order_id': '32167395'}, {'order_id': '70613334'}, {'order_id': '29772175'}, {'order_id': '22583757'}, {'order_id': '73437767'}, {'order_id': '45939684'}, {'order_id': '07989816'}, {'order_id': '95732916'}, {'order_id': '10818763'}, {'order_id': '96972003'}, {'order_id': '94747933'}, {'order_id': '53550569'}, {'order_id': '00118769'}, {'order_id': '10544792'}, {'order_id': '65211425'}, {'order_id': '87015170'}, {'order_id': '08239044'}, {'order_id': '33830114'}, {'order_id': '21539414'}, {'order_id': '09951556'}, {'order_id': '08910641'}, {'order_id': '30521761'}, {'order_id': '08195182'}, {'order_id': '17294942'}, {'order_id': '07792072'}, {'order_id': '93536954'}, {'order_id': '73615760'}, {'order_id': '93583173'}, {'order_id': '72947634'}, {'order_id': '63819076'}, {'order_id': '72580746'}, {'order_id': '21529494'}, {'order_id': '56399749'}, {'order_id': '80594911'}, {'order_id': '61034787'}, {'order_id': '87333130'}, {'order_id': '18392940'}, {'order_id': '12292856'}, {'order_id': '59376995'}, {'order_id': '95122056'}, {'order_id': '41216002'}, {'order_id': '22373414'}, {'order_id': '31114258'}, {'order_id': '11879654'}]"
+  },
+  "assistant": {
+    "role": "assistant",
+    "content": "Got it! How can I assist you with this order data?"
+  }
+}
+
+{
+  "user": {
+    "role": "user",
+    "content": "how wide was my order when i last went to california with truck 2215\nOrder Data: []"
+  },
+  "assistant": {
+    "role": "assistant",
+    "content": "I don't have any specific order data to provide the width for your trip to California with truck 2215. Could you check your records or provide more details?"
+  }
+}
+
+{
+  "user": {
+    "role": "user",
+    "content": "how wide was my order when i last went to california with truck 2215\nOrder Data: []"
+  },
+  "assistant": {
+    "role": "assistant",
+    "content": "I don't have any specific order data to provide the width for your trip to California with truck 2215. Could you check your records or provide more details?"
+  }
+}
+
+{
+  "user": {
+    "role": "user",
+    "content": "how wide was my last order to california with truck 2215\nOrder Data: []"
+  },
+  "assistant": {
+    "role": "assistant",
+    "content": "I don't have any order data to check the width for your last order to California with truck 2215. Could you provide more details or check the specific order details?"
+  }
+}
+
+{
+  "user": {
+    "role": "user",
+    "content": "Cvtservicesllc@gmail.com\nOrder Data: [{'order_id': '11879654'}]"
+  },
+  "assistant": {
+    "role": "assistant",
+    "content": "Got it. You're asking about order ID 11879654. How can I assist you with this order?"
+  }
+}
+
+{
+  "user": {
+    "role": "user",
+    "content": "\nOrder Data: [{'if asked count or how many then answer': 85}, {'order_id': '93728473'}, {'order_id': '52805595'}, {'order_id': '39874427'}, {'order_id': '89513925'}, {'order_id': '27985136'}, {'order_id': '25670805'}, {'order_id': '31776566'}, {'order_id': '72408450'}, {'order_id': '92014063'}, {'order_id': '88366331'}, {'order_id': '24350771'}, {'order_id': '71765750'}, {'order_id': '25561874'}, {'order_id': '28268147'}, {'order_id': '88103950'}, {'order_id': '18321211'}, {'order_id': '62745374'}, {'order_id': '07773823'}, {'order_id': '10269063'}, {'order_id': '74379784'}, {'order_id': '59318979'}, {'order_id': '70371730'}, {'order_id': '16890752'}, {'order_id': '13315054'}, {'order_id': '91659217'}, {'order_id': '65951253'}, {'order_id': '77885759'}, {'order_id': '25887922'}, {'order_id': '27513631'}, {'order_id': '73196245'}, {'order_id': '44785741'}, {'order_id': '01529573'}, {'order_id': '98730669'}, {'order_id': '58335122'}, {'order_id': '32862815'}, {'order_id': '74205664'}, {'order_id': '55394296'}, {'order_id': '48137084'}, {'order_id': '16255116'}, {'order_id': '54424274'}, {'order_id': '20890567'}, {'order_id': '32167395'}, {'order_id': '70613334'}, {'order_id': '29772175'}, {'order_id': '22583757'}, {'order_id': '73437767'}, {'order_id': '45939684'}, {'order_id': '07989816'}, {'order_id': '95732916'}, {'order_id': '10818763'}, {'order_id': '96972003'}, {'order_id': '94747933'}, {'order_id': '53550569'}, {'order_id': '00118769'}, {'order_id': '10544792'}, {'order_id': '65211425'}, {'order_id': '87015170'}, {'order_id': '08239044'}, {'order_id': '33830114'}, {'order_id': '21539414'}, {'order_id': '09951556'}, {'order_id': '08910641'}, {'order_id': '30521761'}, {'order_id': '08195182'}, {'order_id': '17294942'}, {'order_id': '07792072'}, {'order_id': '93536954'}, {'order_id': '73615760'}, {'order_id': '93583173'}, {'order_id': '72947634'}, {'order_id': '63819076'}, {'order_id': '72580746'}, {'order_id': '21529494'}, {'order_id': '56399749'}, {'order_id': '80594911'}, {'order_id': '61034787'}, {'order_id': '87333130'}, {'order_id': '18392940'}, {'order_id': '12292856'}, {'order_id': '59376995'}, {'order_id': '95122056'}, {'order_id': '41216002'}, {'order_id': '22373414'}, {'order_id': '31114258'}, {'order_id': '11879654'}]"
+  },
+  "assistant": {
+    "role": "assistant",
+    "content": "Got it! How can I assist you with this order data?"
+  }
+}
+
+{
+  "user": {
+    "role": "user",
+    "content": "when was the last time i went to california with truck 2215\nOrder Data: []"
+  },
+  "assistant": {
+    "role": "assistant",
+    "content": "It looks like there's no record of you going to California with truck 2215 recently."
+  }
+}
+
+{
+  "user": {
+    "role": "user",
+    "content": "when was the last time i went to california with truck 2215\nOrder Data: []"
+  },
+  "assistant": {
+    "role": "assistant",
+    "content": "It looks like there's no record of you going to California with truck 2215 recently."
+  }
+}
+
+{
+  "user": {
+    "role": "user",
+    "content": "when was the last time i went to california with truck 2215\nOrder Data: []"
+  },
+  "assistant": {
+    "role": "assistant",
+    "content": "It looks like there's no record of you going to California with truck 2215 recently."
+  }
+}
+
+{
+  "user": {
+    "role": "user",
+    "content": "which was my last timme i went to california with my truck 2115\nOrder Data: []"
+  },
+  "assistant": {
+    "role": "assistant",
+    "content": "I don't have any records of your recent trips to California with truck 2115. Could you provide more details or check the information again?"
+  }
+}
+
+{
+  "user": {
+    "role": "user",
+    "content": "when was the last tiime i went to california with truck 2215\nOrder Data: []"
+  },
+  "assistant": {
+    "role": "assistant",
+    "content": "It looks like there's no record of your trip to California with truck 2215 in the data I have."
+  }
+}
+
+{
+  "user": {
+    "role": "user",
+    "content": "when was the last tiime i went to California with truck 2215\nOrder Data: []"
+  },
+  "assistant": {
+    "role": "assistant",
+    "content": "It looks like there's no record of your last trip to California with truck 2215 in the data I have."
+  }
+}
+
+{
+  "user": {
+    "role": "user",
+    "content": "when was the last time i  went to California with truck 2215\nOrder Data: [{'order_id': '41216002', 'routeData': [{'state_name': 'California - 2025-01-08'}], 'truck_id': '2215', 'order_created_date': '2025-01-07 09:17:19'}]"
+  },
+  "assistant": {
+    "role": "assistant",
+    "content": "You last went to California with truck 2215 on 2025-01-08."
+  }
+}
+
+{
+  "user": {
+    "role": "user",
+    "content": "when was the last time i  went to California with truck 2215\nOrder Data: [{'order_id': '41216002', 'routeData': [{'state_name': 'California - 2025-01-08'}], 'truck_id': '2215', 'order_created_date': '2025-01-07 09:17:19'}]"
+  },
+  "assistant": {
+    "role": "assistant",
+    "content": "You last went to California with truck 2215 on 2025-01-08."
+  }
+}
+
+{
+  "user": {
+    "role": "user",
+    "content": "when was the last time i  went to california with truck 2215\nOrder Data: []"
+  },
+  "assistant": {
+    "role": "assistant",
+    "content": "It looks like there's no recent record of you going to California with truck 2215."
+  }
+}
+
+{
+  "user": {
+    "role": "user",
+    "content": "when was the last time i  went to california with truck 2215\nOrder Data: [{'order_id': '41216002', 'routeData': [{'state_name': 'California - 2025-01-08'}], 'truck_id': '2215', 'order_created_date': '2025-01-07 09:17:19'}]"
+  },
+  "assistant": {
+    "role": "assistant",
+    "content": "You last went to California with truck 2215 on January 8, 2025."
+  }
+}
+
+{
+  "user": {
+    "role": "user",
+    "content": "how wide was my load in my last visit to california with truck 2215\nOrder Data: [{'order_id': '41216002', 'routeData': [{'state_name': 'California - 2025-01-08'}], 'truck_id': '2215', 'overallwidth/wide': {'feet': '12', 'inch': '0'}}]"
+  },
+  "assistant": {
+    "role": "assistant",
+    "content": "The width of your load was 12 feet."
+  }
+}
+
+{
+  "user": {
+    "role": "user",
+    "content": "give me the link for truck registration\nOrder Data: [{'order_id': '41262028', 'truckReg_exp': '2025-11-30', 'registration': 'https://synchrontms.s3.us-east-2.amazonaws.com/permits/trucks/1733176143_43.pdf , Exp Date:2025-11-30'}]"
+  },
+  "assistant": {
+    "role": "assistant",
+    "content": "Here's the link for the truck registration: [https://synchrontms.s3.us-east-2.amazonaws.com/permits/trucks/1733176143_43.pdf](https://synchrontms.s3.us-east-2.amazonaws.com/permits/trucks/1733176143_43.pdf)"
+  }
+}
+
+{
+  "user": {
+    "role": "user",
+    "content": "what is my truck expiry date\nOrder Data: [{'order_id': '41262028', 'truckReg_exp': '2025-11-30'}]"
+  },
+  "assistant": {
+    "role": "assistant",
+    "content": "Your truck's expiry date is November 30, 2025."
+  }
+}
+

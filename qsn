@@ -1,0 +1,52 @@
+General Questions->
+
+1. How many orders are closed?
+2. How many orders am I having in the past 2 months?
+3. When was the last time I went to Oregon?
+4. How many times did I go to Texas in December?
+5. What was the state fee when I last went to California?
+6. How many orders are there in December in which the amount paid is zero?
+7. what was the width of the order in my last visit to California
+
+Order Specific Questions->
+
+1. What is the axle spacing between A2 and A3?
+2. What is the total estimated cost for this order?
+3. How much amount is paid?
+4. How many states are there in the route?
+5. Tell me how many permits are attached.
+6. Which state's permits are not attached?
+7. Is the Alabama permit attached?
+8. Download registration for truck/trailer
+9. Give me the route link/url for the order
+10. show me the route link for the south carolina
+11. download the invoice for the order
+12. tell me about the pricing breakdown for texas                                                                                                                                             
+13. what is the price/service fee/permit fee for Mississippi
+14. which were the orders wider than 10 feet in december
+15. how many orders are taller than 9 feet
+16.
+
+Permit Specific Questions->
+
+1. What is the state fee for Mississippi?
+2. Tell me about the travel restrictions in Alabama.
+3. What are the speed limits in Texas?
+4. Tell me about signs and flags in South Carolina.
+5. What is the total cost for my orders in the past month?
+6. Is there any escort required to travel in Texas?
+7. Am I allowed to travel in Texas without any fine?
+8. What is the maximum speed am I allowed to go in Alabama?
+
+
+a single big function all these filters
+
+truck id
+trailer id
+estimated cost value
+total_paid_amount
+total_due
+totalWeight
+overalllength
+overallwidth
+overallheight

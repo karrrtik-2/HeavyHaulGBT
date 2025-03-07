@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+pydantic
+python-dotenv
+groq
+pymongo
+requests
+edge-tts

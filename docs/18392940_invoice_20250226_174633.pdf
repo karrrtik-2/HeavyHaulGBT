@@ -1,0 +1,845 @@
+<html lang="en" class="light-style layout-navbar-fixed layout-wide" dir="ltr" data-theme="theme-default"
+    data-assets-path="public/" data-template="front-pages">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SYNCHRON PERMITS/view-invoice</title>
+<!-- <title>Landing Page - Front Pages | Vuexy - Bootstrap Admin Template</title> -->
+<meta name="description" content="" />
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="https://permits.synchrontms.com/img/favicon/favicon-32x32.png" />
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&ampdisplay=swap"
+        rel="stylesheet" />
+<link rel="stylesheet" href="https://permits.synchrontms.com/vendor/fonts/tabler-icons.css" />
+<style>
+@media print {
+/* Increase font size for printing */
+    body {
+	font-size: 15px;
+}
+.invoice-actions {
+	display: none;
+}
+ a::after {
+ content: none !important;
+}
+#invoice-content {
+	font-size: 15px;
+}
+.fontSizeCustom th, .fontSizeCustom td, .fontSizeCustom span {
+	font-size: 13px;
+}
+.print-page-break {
+	page-break-before: always; /* or page-break-after: always; */
+}
+.info {
+	font-size: 18px;
+}
+.mainheading {
+	font-size: 14px;
+}
+.paddingBottomPrint {
+	padding-bottom: 0!important;
+	margin-bottom: -15px;
+}
+.paddingTopPrint {
+	padding-top: 15px!important;
+}
+.marginBottomPrint {
+	margin-bottom: -10px !important;
+}
+}
+ @media (max-width: 767px) {
+ .mobilr {
+font-size:15px;
+}
+}
+ @media (min-width:768px) and (max-width:1024px) {
+ .mobilr {
+font-size:15px;
+}
+}
+tr {
+	vertical-align: text-bottom;
+}
+.text-end {
+	width: 100%;
+}
+.btn-primary {
+    color: #fff !important;
+    background-color: #7367f0!important;
+    border-color: #7367f0!important;
+}
+.btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .btn-primary.show.dropdown-toggle, .show > .btn-primary.dropdown-toggle {
+    color: #fff !important;
+    background-color: #685dd8 !important;
+    border-color: #685dd8 !important;
+}
+</style>
+<!-- Core CSS -->
+<link rel="stylesheet" href="https://permits.synchrontms.com/vendor/css/rtl/core.css"/>
+<link rel="stylesheet" href="https://permits.synchrontms.com/vendor/css/rtl/theme-default.css"
+        class="template-customizer-theme-css" />
+<link rel="stylesheet" href="https://permits.synchrontms.com/css/demo.css" />
+<link rel="stylesheet" href="https://permits.synchrontms.com/vendor/css/pages/front-page.css" />
+<!-- Vendors CSS -->
+<link rel="stylesheet" href="https://permits.synchrontms.com/vendor/libs/node-waves/node-waves.css" />
+<link rel="stylesheet" href="https://permits.synchrontms.com/vendor/libs/nouislider/nouislider.css" />
+<link rel="stylesheet" href="https://permits.synchrontms.com/vendor/libs/swiper/swiper.css" />
+<!-- Page CSS -->
+<link rel="stylesheet" href="https://permits.synchrontms.com/vendor/css/pages/front-page-landing.css" />
+<link rel="stylesheet" href="https://permits.synchrontms.com/vendor/libs/apex-charts/apex-charts.css" />
+<!-- Helpers -->
+<script src="https://permits.synchrontms.com/vendor/js/helpers.js"></script>
+<!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+<!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
+<script src="https://permits.synchrontms.com/vendor/js/template-customizer.js"></script>
+<!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+<script src="https://permits.synchrontms.com/js/front-config.js"></script>
+<script src="https://permits.synchrontms.com/vendor/js/dropdown-hover.js"></script>
+<script src="https://permits.synchrontms.com/vendor/js/mega-dropdown.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+#template-customizer {
+	display:none;
+}
+</style>
+</head>
+<body>
+<div class="content-wrapper">
+<div class="container-xxl flex-grow-1 container-p-y">
+<div class="row invoice-preview g-3">
+  <!-- <div class="col-xl-10 col-md-8 col-12 mb-md-0 mb-4"> -->
+  <div class="col-xl-8 col-md-8 col-12 mb-md-0 mb-4">
+    <div class="card invoice-preview-card">
+      <div id="invoice-content" class="invoice-content">
+        <div class="card-body paddingBottomPrint">
+          <div
+                                        class="d-flex justify-content-between flex-xl-row flex-md-column flex-sm-row flex-column m-sm-3 m-0 marginBottomPrint">
+            <div class="mb-xl-0 mb-4 mainheading">
+              <div class="d-flex svg-illustration mb-4 gap-2 align-items-center"> <img src="https://permits.synchrontms.com/img/logo_permits/Light_logo_290.png" x="0" y="0" width="135" height="41" /> </div>
+              <p class="mb-2">TRC LOGISTICS LLC</p>
+              <p class="mb-2">3430 E RUSSELL Rd 301-87</p>
+              <p class="mb-2">Las Vegas, Nevada, 89120</p>
+              <p class="mb-2">984-293-8503</p>
+            </div>
+            <div>
+              <h4 class="fw-medium mb-2">INVOICE #18392940</h4>
+              
+                            
+              
+              <h4 class="fw-medium mb-2 pt-1 txtGreen" style="color:green">PAID IN FULL</h4>
+                            <div class="mb-2 pt-1"> <span>Order Date:</span> <span class="fw-medium">Dec 17, 2024</span> </div>
+              <div class="pt-1"> <span>Due Date:</span> <span class="fw-medium">Dec 24, 2024</span> </div>
+            </div>
+          </div>
+        </div>
+        <hr class="my-0">
+        <div class="card-body paddingTopPrint">
+          <div class="d-flex justify-content-between flex-xl-row flex-md-column flex-sm-row flex-column m-sm-3 m-0">
+            <div class="mb-xl-0 mb-4">                                           
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                                                        
+                            
+                                          
+                                                        
+                                                                      
+                            
+                            
+                                          
+                                                        
+                                                                      
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                                                        
+                                          
+                                                                                    
+                                          
+                            
+                            
+                                          
+                                                                                    
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                                                      
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                                                      
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                                                        
+                                          
+                            
+                            
+                                          
+                            <h6 class="mb-3 info">Invoice To:</h6>
+                            <p class="mb-1">Cvt services llc</p>
+              <p class="mb-1">365 Cliff Run Lane</p>
+              <p class="mb-1">Las Vegas, Nevada, 89138, US</p>
+              <p class="mb-1">Cvtservicesllc@gmail.com</p>
+               </div>
+            <div class="">
+              <h6 class="mb-4 info">Info:</h6>
+              <table class="">
+                <tbody>
+                  <tr>
+                    <td class="pe-4">Truck#:</td>
+                    <td class="fw-medium">4156</td>
+                  </tr>
+                  <tr>
+                    <td class="pe-4">Trailer#</td>
+                    <td class="fw-medium">232</td>
+                  </tr>
+                  <tr>
+                    <td class="pe-4">Driver Name:</td>
+                    <td>Vitalie Chiorescu</td>
+                  </tr>
+                                <tr>
+                  <td class="pe-4">Width</td>
+                  <td>9'8"</td>
+                </tr>
+                <tr>
+                  <td class="pe-4">Height</td>
+                  <td>14'0"</td>
+                </tr>
+                <tr>
+                  <td class="pe-4">Weight</td>
+                  <td>                     84000
+                     </td>
+                </tr>
+                </tbody>
+                
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive border-top">
+          <table class="table m-0 fontSizeCustom">
+            <thead>
+              <tr>
+                <th>STATE NAME</th>
+                <th>PERMIT NUMBER</th>
+                <th>PERMIT FEE</th>
+                <th>STATE FEE</th>
+                                <th>SERVICE FEE</th>
+                <th>PRICE</th>
+              </tr>
+            </thead>
+            <tbody>
+            
+             
+                                                                        <tr>               <td class="text-nowrap">California</td>
+              <td>         
+                
+                                e24-110609
+                                
+                 </td>
+              <td>     
+                                $16
+                 
+                 </td>
+              <td>  
+                  $0
+                                 </td>
+                            <td>  
+                                25.03
+                                 </td>
+              <td>      
+                                $41.03
+                                 </td>
+               </tr>
+                                                            <tr>               <td class="text-nowrap">Washington</td>
+              <td>         
+                
+                                24-1219200-001
+                                
+                 </td>
+              <td>     
+                                $14.42
+                 
+                 </td>
+              <td>  
+                  $0
+                                 </td>
+                            <td>  
+                                25.03
+                                 </td>
+              <td>      
+                                $39.45
+                                 </td>
+               </tr>
+                                    <tr>  </tr>
+                                                            <tr>               <td class="text-nowrap">Nevada</td>
+              <td>         
+                
+                                437241
+                                
+                 </td>
+              <td>     
+                                $25
+                 
+                 </td>
+              <td>  
+                  $0
+                                 </td>
+                            <td>  
+                                25.03
+                                 </td>
+              <td>      
+                                $50.03
+                                 </td>
+               </tr>
+                        <!--  -->
+                                                            <tr>  </tr>
+                                                            <tr>  </tr>
+                                                            <tr>  </tr>
+                                                            <tr>  </tr>
+                        <!--  -->
+                        <tr class="mobilr">
+              <td colspan="3" class="align-top px-4 py-4"><p class="mb-2 mt-3"> <span class="fw-medium">Unit:</span> <span>4156</span> </p>
+                <p class="mb-2 mt-3"> <span class="fw-medium">Start Address:</span>                   
+                                    2205 70th Ave E, Fife, WA 98424
+                   </p>
+                <p class="mb-2 mt-3"> <span class="fw-medium">Final Address:</span>                    <span>600 Glendale Ave, Sparks, NV 89431</span>  </p>
+                <p class="mb-2 mt-3"> <span class="fw-medium">Description:</span> <span class="ms-3">   
+                    
+                  CRATED CNC MACHINE
+                  </span> </p></td>
+              <td colspan="2" class="text-end pe-3 py-4"><p class="mb-2 pt-3">Subtotal:</p>
+                                <p class="mb-2">Discount:</p>
+                                
+                                
+                                <p class="mb-2">3.25% Card Processing Fee</p>
+                                <p class="mb-0 pb-3">Total:</p></td>
+              <td class="ps-2 py-4"><p class="fw-medium mb-2 pt-3 p1">                   $130.51 </p>
+                                <p class="fw-medium mb-2"> $15.00 </p>
+                                
+                                
+                                <p class="fw-medium mb-2">                                     
+                  $3.75 </p>
+                                <p class="fw-medium mb-0 pb-3 p3 119.264075"> $119.26 </p></td>
+            </tr>
+            </tbody>
+            
+          </table>
+        </div>
+        <div class="card-body mx-3">
+          <div class="row">
+            <div class="col-12 fontSizeCustom ">  <span>It was a pleasure working with you and your team. We hope you will keep us in mind for future projects. Thank You!</span> </div>
+            <div class="col-6"> </div>
+          </div>
+        </div>
+        <hr class="my-0">
+                <div class="card-body1 pb-3" style="">
+          <div class="card-header d-flex justify-content-center align-items-center align-center px-4 pt-3 pb-3">
+            <h5 class="card-title m-0">Payment History</h5>
+          </div>
+          <div class="table-responsive text-nowrap1 border-top">
+            <table class="table table-hover transactions fontSizeCustom">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Payment method</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+              
+                            <tr class="succeeded">
+                <td>Dec 22, 2024, 16:15:12</td>
+                <td>  
+                  
+                  
+                  
+                   <img class="img-fluid" src="https://permits.synchrontms.com/img/icons/payments/visa.png" alt="Visa Card" width="40" height="20">                   
+                                    
+                  
+                                    
+                                    ••••••1466
+                                    </th>
+                <td>119.26</td>
+                <td>succeeded</td>
+                <td>Payment has been successfully processed</td>
+              </tr>
+                            <tr class="succeeded">
+                <td>Dec 22, 2024, 16:14:58</td>
+                <td>                   
+                  
+                                    
+                   <b>Discount</b>                   </th>
+                <td>15.00</td>
+                <td>succeeded</td>
+                <td>Payment done through discount</td>
+              </tr>
+                            </tbody>
+              
+            </table>
+          </div>
+        </div>
+         </div>
+    </div>
+  </div>
+  <!-- add secound layout -->
+  <div class="col-xl-4 col-md-4 col-sm-6 invoice-actions">
+    <div class="card">
+      <div class="card-body"> <a href="https://permits.synchrontms.com/generate-pdf/18392940" class="btn btn-primary d-grid w-100 mb-2 waves-effect">Download</a>
+        <!-- <a class="btn btn-label-secondary d-grid w-100 mb-2 waves-effect" href="#" onclick="printInvoice(); return false;">
+                        Print
+                    </a> -->
+        <a class="btn btn-label-secondary btn-label-primary d-grid w-100 mb-2 waves-effect" href="Javascript:;" onClick="printDiv('invoice-content')" style="pointer-events: auto; cursor: pointer;"> Print </a>  
+                 </div>
+    </div>
+  </div>
+  <!-- end secound layout  -->
+</div>
+<!-- Core JS -->
+<!-- build:js assets/vendor/js/core.js -->
+<script src="https://permits.synchrontms.com/vendor/libs/popper/popper.js"></script>
+<script src="https://permits.synchrontms.com/vendor/js/bootstrap.js"></script>
+<script src="https://permits.synchrontms.com/vendor/libs/node-waves/node-waves.js"></script>
+<!-- endbuild -->
+<!-- Vendors JS -->
+<script src="https://permits.synchrontms.com/vendor/libs/nouislider/nouislider.js"></script>
+<script src="https://permits.synchrontms.com/vendor/libs/swiper/swiper.js"></script>
+<!-- Main JS -->
+<script src="https://permits.synchrontms.com/js/front-main.js"></script>
+<!-- Page JS -->
+<script src="https://permits.synchrontms.com/js/front-page-landing.js"></script>
+<!-- <script>
+function printInvoice() {
+    // Open a new window for printing
+    var printWindow = window.open('', '_blank');
+    
+    // Set the HTML content for printing
+    var invoiceContent = document.getElementById('invoice-content').innerHTML;
+     // Get the stylesheets and add them to the new window's head
+     var stylesheets = document.styleSheets;
+    var styles = '';
+    for (var i = 0; i < stylesheets.length; i++) {
+        var stylesheet = stylesheets[i];
+        if (stylesheet.href) {
+            var link = '<link rel="stylesheet" type="text/css" href="' + stylesheet.href + '">';
+            styles += link;
+        }
+    }
+    printWindow.document.open();
+    printWindow.document.write('<html><head><title>Invoice</title></head><body>');
+    printWindow.document.write('<h1>Invoice</h1>');
+    printWindow.document.write(invoiceContent);
+    printWindow.document.write('</body></html>');
+    printWindow.document.close();
+
+    // Trigger the print dialog
+    printWindow.print();
+    printWindow.close();
+}
+</script> -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    let printLink = document.getElementById("printer");
+    let container = document.getElementById("invoice-content");
+
+    printLink.addEventListener("click", event => {
+        event.preventDefault();
+        printLink.style.display = "none";
+        window.print();
+    }, false);
+
+    container.addEventListener("click", event => {
+        printLink.style.display = "flex";
+    }, false);
+
+}, false);
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+<script src="https://permits.synchrontms.com/assets/js/custom-invoice-print.js"></script>
+<script>
+document.getElementById('create_pdf').addEventListener('click', () => {
+    // Get the content you want to include in the PDF
+    const pdfContent = document.getElementById('invoice-content');
+
+    // Save the current color of text elements
+    const originalColors = [];
+    const textElements = pdfContent.querySelectorAll('p, span, div, td, th, h2, h3, h4, h5, h6');
+    textElements.forEach((element, index) => {
+        // Check if the element has the class "fw-medium"
+        if (!element.classList.contains('fw-medium')) {
+            originalColors[index] = element.style.color; // Save original color
+            element.style.color = '#000'; // Set color to black
+        } else {
+            originalColors[index] = null; // Mark as null to indicate no change
+        }
+    });
+
+    // Create a new jsPDF instance with A4 dimensions (210mm x 297mm)
+    const pdf = new jsPDF('p', 'mm', 'a4', true);
+
+    // Convert the content to a canvas using html2canvas
+    html2canvas(pdfContent, {
+        scale: 2, // Adjust the scale for better image quality
+        logging: false // Disable logging to console for cleaner output
+    }).then(canvas => {
+        // Calculate the aspect ratio for resizing
+        const imgWidth = 210; // A4 width in mm
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+        // Add the canvas to the PDF with A4 dimensions
+        const imgData = canvas.toDataURL('image/jpeg', 0.6); // Adjust compression quality (0.0 - 1.0)
+        pdf.addImage(imgData, 'JPEG', 0, 0, imgWidth, imgHeight);
+
+        // Restore original colors of text elements
+        textElements.forEach((element, index) => {
+            if (originalColors[index] !== null) {
+                element.style.color = originalColors[index]; // Restore original color
+            }
+        });
+
+        // Save or open the PDF
+        pdf.save('Truck 4156 - Invoice 18392940 - WA - NV - SynchronPermits.pdf');
+    });
+});
+</script>
+</body>
+</html>
