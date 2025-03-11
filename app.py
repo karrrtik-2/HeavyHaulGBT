@@ -213,13 +213,19 @@ class Session:
         # Process dot notation in keys
         processed_keys = []
         for key in keys_in_response:
+            key = key.strip()
+            # Handle key.subkey notation (including state_name.state_name)
             if '.' in key:
                 parts = key.split('.')
-                if parts[0] == 'routeData':
-                    processed_keys.append(parts[1])
+                # Add both parts as separate keys
+                for part in parts:
+                    if part and part not in processed_keys:
+                        processed_keys.append(part)
             else:
-                processed_keys.append(key)
-        
+                # Regular key without dots
+                if key and key not in processed_keys:
+                    processed_keys.append(key)
+
         print(f"[KEYS] Processed keys: {processed_keys}")
         
         if (any(key in route_data_keys for key in processed_keys) or
